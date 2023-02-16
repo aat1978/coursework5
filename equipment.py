@@ -48,7 +48,7 @@ class Equipment:
 
     def get_armor(self, armor_name) -> Optional[Armor]:
         # TODO возвращает объект брони по имени
-        for armor in self.equipment.armor:
+        for armor in self.equipment.armors:
             if armor.name == armor_name:
                 return armor
         return None

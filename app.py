@@ -98,9 +98,9 @@ def choose_hero():
         weapon_name = request.form['weapon']
         armor_name = request.form['armor']
         unit_class = request.form['unit_class']
-        player = PlayerUnit(name=name, unit_class=unit_class.get(unit_class))
+        player = PlayerUnit(name=name, unit_class=unit_classes.get(unit_class))
         player.equip_armor(Equipment().get_armor(armor_name))
-        player.equip_weapon(Equipment().get_waepon(weapon_name))
+        player.equip_weapon(Equipment().get_weapon(weapon_name))
         heroes['player'] = player
         return redirect(url_for('choose_enemy'))
 
@@ -121,7 +121,7 @@ def choose_enemy():
             'armors': armors,
             'classes': unit_classes,
         }
-        return render_template('helo_choosing.html', result=result)
+        return render_template('hero_choosing.html', result=result)
     if request.method == 'POST':
         name = request.form['name']
         weapon_name = request.form['weapon']
@@ -133,7 +133,7 @@ def choose_enemy():
         enemy.equip_armor(Equipment().get_armor(armor_name))
         enemy.equip_weapon(Equipment().get_weapon(weapon_name))
         heroes['enemy'] = enemy
-        return redirect(url_for('Start_fight'))
+        return redirect(url_for('start_fight'))
 
 
 if __name__ == "__main__":
